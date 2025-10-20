@@ -152,8 +152,8 @@ if __name__ == '__main__':
         loop_elapsed_time = time.time() - step_start
         print("Step Time:", loop_elapsed_time)
 
-        if(loop_elapsed_time < simulation_dt):
-            time.sleep(simulation_dt - (loop_elapsed_time))
+        #if(loop_elapsed_time < simulation_dt):
+        #    time.sleep(simulation_dt - (loop_elapsed_time))
 
         # Render only at a certain frequency -----------------------------------------------------------------
         if time.time() - last_render_time > 1.0 / RENDER_FREQ or env.step_num == 1:
