@@ -145,12 +145,12 @@ if __name__ == '__main__':
         action[env.legs_tau_idx.FR] = tau.FR.reshape((3,))
         action[env.legs_tau_idx.RL] = tau.RL.reshape((3,))
         action[env.legs_tau_idx.RR] = tau.RR.reshape((3,))
+        loop_elapsed_time = time.time() - step_start
+        print("Step Time:", loop_elapsed_time)
         state, reward, is_terminated, is_truncated, info = env.step(action=action)
 
 
         # Sleep to match real-time ---------------------------------------------------------
-        loop_elapsed_time = time.time() - step_start
-        print("Step Time:", loop_elapsed_time)
 
         #if(loop_elapsed_time < simulation_dt):
         #    time.sleep(simulation_dt - (loop_elapsed_time))
