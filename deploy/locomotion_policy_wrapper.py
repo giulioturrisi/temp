@@ -210,7 +210,8 @@ class LocomotionPolicyWrapper:
         obs = obs.astype(np.float32)
         rl_action_temp = self.policy.run(None, {'obs': obs})[0][0]
         rl_action_temp = np.clip(rl_action_temp, -self.desired_clip_actions, self.desired_clip_actions)
-        print("RL Inference Time:", time.time() - time_start_rl_inference)
+        time_end_rl_inference = time.time()
+        print("RL Inference Time:", time_end_rl_inference - time_start_rl_inference)
 
         # Action Filtering
         if(self.use_filter_actions):
