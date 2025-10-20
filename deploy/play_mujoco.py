@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
 
     env.reset(random=False)
-    env.render()  # Pass in the first render call any mujoco.viewer.KeyCallbackType
+    #env.render()  # Pass in the first render call any mujoco.viewer.KeyCallbackType
 
 
 
@@ -157,7 +157,7 @@ if __name__ == '__main__':
 
         # Render only at a certain frequency -----------------------------------------------------------------
         if time.time() - last_render_time > 1.0 / RENDER_FREQ or env.step_num == 1:
-            env.render()
+            #env.render()
             last_render_time = time.time()
 
             if(locomotion_policy.use_vision):
