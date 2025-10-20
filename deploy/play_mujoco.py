@@ -150,6 +150,7 @@ if __name__ == '__main__':
 
         # Sleep to match real-time ---------------------------------------------------------
         loop_elapsed_time = time.time() - step_start
+        print("Step Time:", loop_elapsed_time)
 
         if(loop_elapsed_time < simulation_dt):
             time.sleep(simulation_dt - (loop_elapsed_time))
