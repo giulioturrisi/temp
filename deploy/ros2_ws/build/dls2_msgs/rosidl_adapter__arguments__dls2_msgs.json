@@ -1,0 +1,10 @@
+{
+  "package_name": "dls2_msgs",
+  "non_idl_tuples": [
+    "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/BlindStateMsg.msg",
+    "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/BaseStateMsg.msg",
+    "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/ControlSignalMsg.msg",
+    "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/TrajectoryGeneratorMsg.msg",
+    "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/ImuMsg.msg"
+  ]
+}
