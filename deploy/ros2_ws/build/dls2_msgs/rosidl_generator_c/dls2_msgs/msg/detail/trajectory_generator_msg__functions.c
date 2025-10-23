@@ -45,6 +45,8 @@ dls2_msgs__msg__TrajectoryGeneratorMsg__init(dls2_msgs__msg__TrajectoryGenerator
   // swing_period
   // normal_force_max
   // normal_force_min
+  // kp
+  // kd
   return true;
 }
 
@@ -75,6 +77,8 @@ dls2_msgs__msg__TrajectoryGeneratorMsg__fini(dls2_msgs__msg__TrajectoryGenerator
   // swing_period
   // normal_force_max
   // normal_force_min
+  // kp
+  // kd
 }
 
 bool
@@ -199,6 +203,18 @@ dls2_msgs__msg__TrajectoryGeneratorMsg__are_equal(const dls2_msgs__msg__Trajecto
       return false;
     }
   }
+  // kp
+  for (size_t i = 0; i < 12; ++i) {
+    if (lhs->kp[i] != rhs->kp[i]) {
+      return false;
+    }
+  }
+  // kd
+  for (size_t i = 0; i < 12; ++i) {
+    if (lhs->kd[i] != rhs->kd[i]) {
+      return false;
+    }
+  }
   return true;
 }
 
@@ -287,6 +303,14 @@ dls2_msgs__msg__TrajectoryGeneratorMsg__copy(
   // normal_force_min
   for (size_t i = 0; i < 4; ++i) {
     output->normal_force_min[i] = input->normal_force_min[i];
+  }
+  // kp
+  for (size_t i = 0; i < 12; ++i) {
+    output->kp[i] = input->kp[i];
+  }
+  // kd
+  for (size_t i = 0; i < 12; ++i) {
+    output->kd[i] = input->kd[i];
   }
   return true;
 }

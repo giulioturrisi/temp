@@ -7,7 +7,7 @@
 # since a plain shell script can't determine its own path when being sourced
 # either use the provided COLCON_CURRENT_PREFIX
 # or fall back to the build time prefix (if it exists)
-_colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX=/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install
+_colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX=/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install
 if [ ! -z "$COLCON_CURRENT_PREFIX" ]; then
   _colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX="$COLCON_CURRENT_PREFIX"
 elif [ ! -d "$_colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX" ]; then
@@ -31,11 +31,7 @@ _colcon_prefix_chain_sh_source_script() {
 
 # source chained prefixes
 # setting COLCON_CURRENT_PREFIX avoids relying on the build time prefix of the sourced script
-COLCON_CURRENT_PREFIX="/home/iit.local/gturrisi/miniforge3/envs/basic_locomotion_dls_isaaclab_ros2_env"
-_colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
-
-# setting COLCON_CURRENT_PREFIX avoids relying on the build time prefix of the sourced script
-COLCON_CURRENT_PREFIX="/home/iit.local/gturrisi/personal_ws_home/unitree_ros2_dls/unitree_ros2/cyclonedds_ws/install"
+COLCON_CURRENT_PREFIX="/home/alienware/miniforge3/envs/isaaclab_env"
 _colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
 
 

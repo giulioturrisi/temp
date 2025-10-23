@@ -22,8 +22,7 @@ function _colcon_prefix_chain_powershell_source_script {
 }
 
 # source chained prefixes
-_colcon_prefix_chain_powershell_source_script "/home/iit.local/gturrisi/miniforge3/envs/basic_locomotion_dls_isaaclab_ros2_env\local_setup.ps1"
-_colcon_prefix_chain_powershell_source_script "/home/iit.local/gturrisi/personal_ws_home/unitree_ros2_dls/unitree_ros2/cyclonedds_ws/install\local_setup.ps1"
+_colcon_prefix_chain_powershell_source_script "/home/alienware/miniforge3/envs/isaaclab_env\local_setup.ps1"
 
 # source this prefix
 $env:COLCON_CURRENT_PREFIX=(Split-Path $PSCommandPath -Parent)

@@ -106,6 +106,14 @@ cdr_serialize(
   {
     cdr << ros_message.normal_force_min;
   }
+  // Member: kp
+  {
+    cdr << ros_message.kp;
+  }
+  // Member: kd
+  {
+    cdr << ros_message.kd;
+  }
   return true;
 }
 
@@ -207,6 +215,16 @@ cdr_deserialize(
   // Member: normal_force_min
   {
     cdr >> ros_message.normal_force_min;
+  }
+
+  // Member: kp
+  {
+    cdr >> ros_message.kp;
+  }
+
+  // Member: kd
+  {
+    cdr >> ros_message.kd;
   }
 
   return true;
@@ -360,6 +378,20 @@ get_serialized_size(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: kp
+  {
+    size_t array_size = 12;
+    size_t item_size = sizeof(ros_message.kp[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: kd
+  {
+    size_t array_size = 12;
+    size_t item_size = sizeof(ros_message.kd[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -375,8 +407,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
 
   const size_t padding = 4;
   const size_t wchar_size = 4;
-  size_t last_member_size = 0;
-  (void)last_member_size;
   (void)padding;
   (void)wchar_size;
 
@@ -401,7 +431,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 1;
 
-    last_member_size = array_size * sizeof(uint32_t);
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
@@ -410,7 +439,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 1;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -419,7 +447,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -428,7 +455,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -437,7 +463,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -446,7 +471,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -455,7 +479,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -464,7 +487,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -473,7 +495,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -482,7 +503,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -491,7 +511,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -500,7 +519,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -509,7 +527,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 6;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -518,7 +535,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint8_t);
     current_alignment += array_size * sizeof(uint8_t);
   }
 
@@ -526,7 +542,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -535,7 +550,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -544,7 +558,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -553,7 +566,6 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -562,25 +574,27 @@ max_serialized_size_TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  size_t ret_val = current_alignment - initial_alignment;
-  if (is_plain) {
-    // All members are plain, and type is not empty.
-    // We still need to check that the in-memory alignment
-    // is the same as the CDR mandated alignment.
-    using DataType = dls2_msgs::msg::TrajectoryGeneratorMsg;
-    is_plain =
-      (
-      offsetof(DataType, normal_force_min) +
-      last_member_size
-      ) == ret_val;
+  // Member: kp
+  {
+    size_t array_size = 12;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  return ret_val;
+  // Member: kd
+  {
+    size_t array_size = 12;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  return current_alignment - initial_alignment;
 }
 
 static bool _TrajectoryGeneratorMsg__cdr_serialize(

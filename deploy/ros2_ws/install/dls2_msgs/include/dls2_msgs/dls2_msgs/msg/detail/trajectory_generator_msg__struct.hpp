@@ -7,7 +7,6 @@
 
 #include <algorithm>
 #include <array>
-#include <cstdint>
 #include <memory>
 #include <string>
 #include <vector>
@@ -59,6 +58,8 @@ struct TrajectoryGeneratorMsg_
       std::fill<typename std::array<double, 4>::iterator, double>(this->swing_period.begin(), this->swing_period.end(), 0.0);
       std::fill<typename std::array<double, 4>::iterator, double>(this->normal_force_max.begin(), this->normal_force_max.end(), 0.0);
       std::fill<typename std::array<double, 4>::iterator, double>(this->normal_force_min.begin(), this->normal_force_min.end(), 0.0);
+      std::fill<typename std::array<double, 12>::iterator, double>(this->kp.begin(), this->kp.end(), 0.0);
+      std::fill<typename std::array<double, 12>::iterator, double>(this->kd.begin(), this->kd.end(), 0.0);
     }
   }
 
@@ -80,7 +81,9 @@ struct TrajectoryGeneratorMsg_
     touch_down(_alloc),
     swing_period(_alloc),
     normal_force_max(_alloc),
-    normal_force_min(_alloc)
+    normal_force_min(_alloc),
+    kp(_alloc),
+    kd(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
@@ -105,6 +108,8 @@ struct TrajectoryGeneratorMsg_
       std::fill<typename std::array<double, 4>::iterator, double>(this->swing_period.begin(), this->swing_period.end(), 0.0);
       std::fill<typename std::array<double, 4>::iterator, double>(this->normal_force_max.begin(), this->normal_force_max.end(), 0.0);
       std::fill<typename std::array<double, 4>::iterator, double>(this->normal_force_min.begin(), this->normal_force_min.end(), 0.0);
+      std::fill<typename std::array<double, 12>::iterator, double>(this->kp.begin(), this->kp.end(), 0.0);
+      std::fill<typename std::array<double, 12>::iterator, double>(this->kd.begin(), this->kd.end(), 0.0);
     }
   }
 
@@ -169,6 +174,12 @@ struct TrajectoryGeneratorMsg_
   using _normal_force_min_type =
     std::array<double, 4>;
   _normal_force_min_type normal_force_min;
+  using _kp_type =
+    std::array<double, 12>;
+  _kp_type kp;
+  using _kd_type =
+    std::array<double, 12>;
+  _kd_type kd;
 
   // setters for named parameter idiom
   Type & set__frame_id(
@@ -291,6 +302,18 @@ struct TrajectoryGeneratorMsg_
     this->normal_force_min = _arg;
     return *this;
   }
+  Type & set__kp(
+    const std::array<double, 12> & _arg)
+  {
+    this->kp = _arg;
+    return *this;
+  }
+  Type & set__kd(
+    const std::array<double, 12> & _arg)
+  {
+    this->kd = _arg;
+    return *this;
+  }
 
   // constant declarations
 
@@ -392,6 +415,12 @@ struct TrajectoryGeneratorMsg_
       return false;
     }
     if (this->normal_force_min != other.normal_force_min) {
+      return false;
+    }
+    if (this->kp != other.kp) {
+      return false;
+    }
+    if (this->kd != other.kd) {
       return false;
     }
     return true;

@@ -1,0 +1,313 @@
+--- git status ---
+HEAD detached from dc9bbf2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_cfg.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_electric.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/aliengo_asset.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/b2_asset.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/go2_asset.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/hyqreal_asset.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
+	modified:   source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/go2_env_cfg.py
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_cfg.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_cfg.py
+index 6de4ca2..c6929d5 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_cfg.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_cfg.py
+@@ -6,14 +6,14 @@
+ from dataclasses import MISSING
+ 
+ from isaaclab.utils import configclass
+-from isaaclab.actuators import DCMotorCfg
++from isaaclab.actuators import DCMotorCfg, DelayedPDActuatorCfg
+ 
+ from .actuator_electric import IdentifiedActuatorElectric
+ from .actuator_hydraulic import IdentifiedActuatorHydraulic
+ 
+ 
+ @configclass
+-class IdentifiedActuatorElectricCfg(DCMotorCfg):
++class IdentifiedActuatorElectricCfg(DelayedPDActuatorCfg):
+     """Configuration for direct control (DC) motor actuator model."""
+ 
+     class_type: type = IdentifiedActuatorElectric
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_electric.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_electric.py
+index 2266c18..2746ca1 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_electric.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/actuators/actuator_electric.py
+@@ -10,14 +10,14 @@ from typing import TYPE_CHECKING
+ 
+ from isaacsim.core.utils.types import ArticulationActions
+ 
+-from isaaclab.actuators import DCMotor
++from isaaclab.actuators import DCMotor, DelayedPDActuator
+ from isaaclab.utils import DelayBuffer, LinearInterpolation
+ 
+ if TYPE_CHECKING:
+     from .actuator_cfg import IdentifiedActuatorElectricCfg
+ 
+ 
+-class IdentifiedActuatorElectric(DCMotor):
++class IdentifiedActuatorElectric(DelayedPDActuator):
+     cfg: IdentifiedActuatorElectricCfg
+ 
+     def __init__(self, cfg: IdentifiedActuatorElectricCfg, *args, **kwargs):
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/aliengo_asset.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/aliengo_asset.py
+index 8edc787..8fc96fb 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/aliengo_asset.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/aliengo_asset.py
+@@ -33,7 +33,7 @@ ALIENGO_HIP_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_hip_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -50,7 +50,7 @@ ALIENGO_THIGH_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_thigh_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -67,7 +67,7 @@ ALIENGO_CALF_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_calf_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/b2_asset.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/b2_asset.py
+index 17733f6..0b380e3 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/b2_asset.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/b2_asset.py
+@@ -21,7 +21,7 @@ B2_HIP_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_hip_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -34,7 +34,7 @@ B2_THIGH_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_thigh_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -47,7 +47,7 @@ B2_CALF_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_calf_joint"],
+     effort_limit=44.4,
+     velocity_limit=21.0,
+-    saturation_effort=44.4,
++    #saturation_effort=44.4,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/go2_asset.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/go2_asset.py
+index 4f7b7a1..f7d0616 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/go2_asset.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/go2_asset.py
+@@ -36,7 +36,7 @@ GO2_HIP_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_hip_joint"],
+     effort_limit=23.7,
+     velocity_limit=30.1,
+-    saturation_effort=23.7,
++    #saturation_effort=23.7,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -47,13 +47,16 @@ GO2_HIP_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     friction = static_friction_hip,
+     dynamic_friction = dynamic_friction_hip,
+     viscous_friction = viscous_friction_hip,
++
++    min_delay=0,  # physics time steps (min: 2.0*0=0.0ms)
++    max_delay=4,  # physics time steps (max: 2.0*4=8.0ms)
+ )
+ 
+ GO2_THIGH_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_thigh_joint"],
+     effort_limit=23.7,
+     velocity_limit=30.1,
+-    saturation_effort=23.7,
++    #saturation_effort=23.7,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -64,13 +67,16 @@ GO2_THIGH_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     friction = static_friction_thigh,
+     dynamic_friction = dynamic_friction_thigh,
+     viscous_friction = viscous_friction_thigh,
++
++    min_delay=0,  # physics time steps (min: 2.0*0=0.0ms)
++    max_delay=4,  # physics time steps (max: 2.0*4=8.0ms)
+ )
+ 
+ GO2_CALF_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     joint_names_expr=[".*_calf_joint"],
+     effort_limit=45.43,
+     velocity_limit=15.7,
+-    saturation_effort=45.43,
++    #saturation_effort=45.43,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -81,6 +87,9 @@ GO2_CALF_ACTUATOR_CFG = IdentifiedActuatorElectricCfg(
+     friction = static_friction_calf,
+     dynamic_friction = dynamic_friction_calf,
+     viscous_friction = viscous_friction_calf,
++
++    min_delay=0,  # physics time steps (min: 2.0*0=0.0ms)
++    max_delay=4,  # physics time steps (max: 2.0*4=8.0ms)
+ )
+ 
+ 
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/hyqreal_asset.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/hyqreal_asset.py
+index 3a8b212..683f589 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/hyqreal_asset.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/assets/hyqreal_asset.py
+@@ -37,7 +37,7 @@ HYQREAL_HIP_ACTUATOR_CFG = IdentifiedActuatorHydraulicCfg(
+     joint_names_expr=[".*_hip_joint"],
+     effort_limit=173.0,
+     velocity_limit=21.0,
+-    saturation_effort=173.0,
++    #saturation_effort=173.0,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -56,7 +56,7 @@ HYQREAL_THIGH_ACTUATOR_CFG = IdentifiedActuatorHydraulicCfg(
+     joint_names_expr=[".*_thigh_joint"],
+     effort_limit=208.0,
+     velocity_limit=21.0,
+-    saturation_effort=208.0,
++    #saturation_effort=208.0,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+@@ -75,7 +75,7 @@ HYQREAL_CALF_ACTUATOR_CFG = IdentifiedActuatorHydraulicCfg(
+     joint_names_expr=[".*_calf_joint"],
+     effort_limit=249.0,
+     velocity_limit=21.0,
+-    saturation_effort=249.0,
++    #saturation_effort=249.0,
+     stiffness=stiffness_mujoco,
+     damping=damping_mujoco,
+     armature=armature_mujoco,
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
+index 8fc520c..1a4b033 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py
+@@ -62,7 +62,7 @@ class FlatPPORunnerCfg(RslRlOnPolicyRunnerCfg):
+         activation="elu",
+     )
+     algorithm = RslRlPpoAlgorithmCfg(
+-        class_name="PPO", #PPO, PPOSymmDataAugmented #AMP_PPO
++        class_name="PPOSymmDataAugmented", #PPO, PPOSymmDataAugmented #AMP_PPO
+         value_loss_coef=1.0,
+         use_clipped_value_loss=True,
+         clip_param=0.2,
+@@ -99,15 +99,24 @@ class FlatPPORunnerCfg(RslRlOnPolicyRunnerCfg):
+             "actions",
+             "clock_data",
+         ]*int(history_length)
+-    obs_space_names_critic = obs_space_names_actor
+-    
++
++    #obs_space_names_actor += ["heightmap:rows4xcols4"]
++    #obs_space_names_actor += ["position_gains"]
++    #obs_space_names_actor += ["velocity_gains"]
++
++
+     # Symmetry Related Stuff -  Asymmetric Critic
+-    """obs_space_names_critic += ["position_gains", 
+-            "velocity_gains",
+-            "friction_static",
+-            "friction_dynamic",
+-            "armature"
+-        ]"""
++    obs_space_names_critic = [
++            "base_lin_vel:base",
++            "base_ang_vel:base",
++            "gravity:base",
++            "ctrl_commands",
++            "default_qpos_js_error",
++            "qvel_js",
++            "actions",
++            "clock_data",
++        ]*int(history_length)
++    obs_space_names_critic += ["base_pos_z", "base_pos_z", "base_lin_vel:base", "clock_data"]
+ 
+     morphologycal_symmetries_cfg = MorphologycalSymmetriesCfg(
+         obs_space_names_actor = obs_space_names_actor,
+@@ -177,10 +186,6 @@ class RoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
+             "clock_data",
+         ]*int(history_length)
+ 
+-    #obs_space_names_actor += ["heightmap:rows4xcols4"]
+-    #obs_space_names_actor += ["position_gains"]
+-    #obs_space_names_actor += ["velocity_gains"]
+-
+ 
+     # Symmetry Related Stuff -  Asymmetric Critic
+     obs_space_names_critic = [
+@@ -193,7 +198,7 @@ class RoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
+             "actions",
+             "clock_data",
+         ]*int(history_length)
+-    obs_space_names_critic += ["base_pos_z", "base_pos_z"]
++    obs_space_names_critic += ["base_pos_z", "base_pos_z", "base_lin_vel:base", "clock_data"]
+ 
+     morphologycal_symmetries_cfg = MorphologycalSymmetriesCfg(
+         obs_space_names_actor = obs_space_names_actor,
+diff --git a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/go2_env_cfg.py b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/go2_env_cfg.py
+index 285fd7a..29a2db3 100644
+--- a/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/go2_env_cfg.py
++++ b/source/basic_locomotion_dls_isaaclab/basic_locomotion_dls_isaaclab/tasks/locomotion/go2_env_cfg.py
+@@ -100,8 +100,8 @@ class EventCfg:
+     mode="reset",
+     params={
+         "asset_cfg": SceneEntityCfg("robot", joint_names=".*"),
+-        "stiffness_distribution_params": (-5.0, 5.0),
+-        "damping_distribution_params": (-1.0, 1.0),
++        "stiffness_distribution_params": (-1.0, 1.0),
++        "damping_distribution_params": (-0.5, 0.5),
+         "operation": "add",
+         "distribution": "uniform",
+     },
+@@ -166,8 +166,8 @@ class Go2FlatEnvCfg(DirectRLEnvCfg):
+         cuncurrent_state_est_batch_size = 512
+         cuncurrent_state_est_train_epochs = 1000
+         cuncurrent_state_est_lr = 1e-3
+-        cuncurrent_state_est_ep_saving_interval = 1000
+-        cuncurrent_state_est_ep_saving_start = 6000
++        cuncurrent_state_est_ep_saving_interval = 800
++        cuncurrent_state_est_ep_saving_start = 800
+ 
+     use_rma = False
+     if(use_rma):
+@@ -309,7 +309,7 @@ class Go2FlatEnvCfg(DirectRLEnvCfg):
+     joints_torque_reward_scale = -2.5e-6 * (1-use_amp)
+     joints_accel_reward_scale = -2.5e-7 * (1-use_amp)
+     joints_energy_reward_scale = -1e-4 * (1-use_amp)
+-    joints_hip_position_reward_scale = -0.1 * (1-use_amp)
++    joints_hip_position_reward_scale = -0.3 * (1-use_amp)
+     joints_thigh_position_reward_scale = -0.1 * (1-use_amp)
+     joints_calf_position_reward_scale = -0.001 * (1-use_amp)
+    

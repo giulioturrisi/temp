@@ -8,7 +8,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 # Import target "dls2_msgs::dls2_msgs__rosidl_generator_py" for configuration ""
 set_property(TARGET dls2_msgs::dls2_msgs__rosidl_generator_py APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(dls2_msgs::dls2_msgs__rosidl_generator_py PROPERTIES
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_NOCONFIG "dls2_msgs::dls2_msgs__rosidl_generator_c;Python::Python"
+  IMPORTED_LINK_DEPENDENT_LIBRARIES_NOCONFIG "dls2_msgs::dls2_msgs__rosidl_generator_c;dls2_msgs::dls2_msgs__rosidl_typesupport_c"
   IMPORTED_LOCATION_NOCONFIG "${_IMPORT_PREFIX}/lib/libdls2_msgs__rosidl_generator_py.so"
   IMPORTED_SONAME_NOCONFIG "libdls2_msgs__rosidl_generator_py.so"
   )

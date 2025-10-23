@@ -47,6 +47,8 @@ typedef struct dls2_msgs__msg__TrajectoryGeneratorMsg
   double swing_period[4];
   double normal_force_max[4];
   double normal_force_min[4];
+  double kp[12];
+  double kd[12];
 } dls2_msgs__msg__TrajectoryGeneratorMsg;
 
 // Struct for a sequence of dls2_msgs__msg__TrajectoryGeneratorMsg.

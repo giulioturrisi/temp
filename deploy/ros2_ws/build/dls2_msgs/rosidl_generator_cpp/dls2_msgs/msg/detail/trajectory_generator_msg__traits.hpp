@@ -349,6 +349,42 @@ inline void to_flow_style_yaml(
       }
       out << "]";
     }
+    out << ", ";
+  }
+
+  // member: kp
+  {
+    if (msg.kp.size() == 0) {
+      out << "kp: []";
+    } else {
+      out << "kp: [";
+      size_t pending_items = msg.kp.size();
+      for (auto item : msg.kp) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: kd
+  {
+    if (msg.kd.size() == 0) {
+      out << "kd: []";
+    } else {
+      out << "kd: [";
+      size_t pending_items = msg.kd.size();
+      for (auto item : msg.kd) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -717,6 +753,46 @@ inline void to_block_style_yaml(
     } else {
       out << "normal_force_min:\n";
       for (auto item : msg.normal_force_min) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: kp
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.kp.size() == 0) {
+      out << "kp: []\n";
+    } else {
+      out << "kp:\n";
+      for (auto item : msg.kp) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: kd
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.kd.size() == 0) {
+      out << "kd: []\n";
+    } else {
+      out << "kd:\n";
+      for (auto item : msg.kd) {
         if (indentation > 0) {
           out << std::string(indentation, ' ');
         }

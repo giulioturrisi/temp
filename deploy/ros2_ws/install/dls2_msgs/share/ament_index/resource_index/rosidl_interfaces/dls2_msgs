@@ -4,7 +4,5 @@ msg/BlindStateMsg.idl
 msg/BlindStateMsg.msg
 msg/ControlSignalMsg.idl
 msg/ControlSignalMsg.msg
-msg/ImuMsg.idl
-msg/ImuMsg.msg
 msg/TrajectoryGeneratorMsg.idl
 msg/TrajectoryGeneratorMsg.msg

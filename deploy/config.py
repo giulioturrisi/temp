@@ -17,7 +17,7 @@ if(robot == "aliengo"):
 
 elif(robot == "go2"):
     Kp_walking = 21.5
-    Kd_walking = 3.5
+    Kd_walking = 1.5
 
     Kp_stand_up_and_down = 25.
     Kd_stand_up_and_down = 2.
@@ -38,7 +38,7 @@ else:
 
 # ----------------------------------------------------------------------------------------------------------------
 
-policy_folder_path = dir_path + "/../tested_policies/" + robot + "/go2_cuncurrent_se"
+policy_folder_path = dir_path + "/../tested_policies/" + robot + "/go2_flat_delay"
 #policy_folder_path = dir_path + "/../tested_policies/" + robot + "/go2_5asymm"
 
 cuncurrent_state_est_network = policy_folder_path + "/exported/cuncurrent_state_estimator.pth"

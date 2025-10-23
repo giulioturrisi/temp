@@ -194,6 +194,20 @@ static bool _TrajectoryGeneratorMsg__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
+  // Field name: kp
+  {
+    size_t size = 12;
+    auto array_ptr = ros_message->kp;
+    cdr.serializeArray(array_ptr, size);
+  }
+
+  // Field name: kd
+  {
+    size_t size = 12;
+    auto array_ptr = ros_message->kd;
+    cdr.serializeArray(array_ptr, size);
+  }
+
   return true;
 }
 
@@ -352,6 +366,20 @@ static bool _TrajectoryGeneratorMsg__cdr_deserialize(
   {
     size_t size = 4;
     auto array_ptr = ros_message->normal_force_min;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: kp
+  {
+    size_t size = 12;
+    auto array_ptr = ros_message->kp;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: kd
+  {
+    size_t size = 12;
+    auto array_ptr = ros_message->kd;
     cdr.deserializeArray(array_ptr, size);
   }
 
@@ -541,6 +569,24 @@ size_t get_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name kp
+  {
+    size_t array_size = 12;
+    auto array_ptr = ros_message->kp;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name kd
+  {
+    size_t array_size = 12;
+    auto array_ptr = ros_message->kd;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -562,8 +608,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
 
   const size_t padding = 4;
   const size_t wchar_size = 4;
-  size_t last_member_size = 0;
-  (void)last_member_size;
   (void)padding;
   (void)wchar_size;
 
@@ -586,7 +630,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 1;
 
-    last_member_size = array_size * sizeof(uint32_t);
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
@@ -594,7 +637,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 1;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -602,7 +644,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -610,7 +651,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -618,7 +658,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -626,7 +665,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -634,7 +672,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -642,7 +679,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 3;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -650,7 +686,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -658,7 +693,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -666,7 +700,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -674,7 +707,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -682,7 +714,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 6;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -690,14 +721,12 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint8_t);
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: nominal_touch_down
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -705,7 +734,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 12;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -713,7 +741,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -721,7 +748,6 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
@@ -729,25 +755,25 @@ size_t max_serialized_size_dls2_msgs__msg__TrajectoryGeneratorMsg(
   {
     size_t array_size = 4;
 
-    last_member_size = array_size * sizeof(uint64_t);
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: kp
+  {
+    size_t array_size = 12;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: kd
+  {
+    size_t array_size = 12;
+
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  size_t ret_val = current_alignment - initial_alignment;
-  if (is_plain) {
-    // All members are plain, and type is not empty.
-    // We still need to check that the in-memory alignment
-    // is the same as the CDR mandated alignment.
-    using DataType = dls2_msgs__msg__TrajectoryGeneratorMsg;
-    is_plain =
-      (
-      offsetof(DataType, normal_force_min) +
-      last_member_size
-      ) == ret_val;
-  }
-
-  return ret_val;
+  return current_alignment - initial_alignment;
 }
 
 static size_t _TrajectoryGeneratorMsg__max_serialized_size(char & bounds_info)

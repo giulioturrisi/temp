@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
 
     env.reset(random=False)
-    #env.render()  # Pass in the first render call any mujoco.viewer.KeyCallbackType
+    env.render()  # Pass in the first render call any mujoco.viewer.KeyCallbackType
 
 
 
@@ -145,19 +145,18 @@ if __name__ == '__main__':
         action[env.legs_tau_idx.FR] = tau.FR.reshape((3,))
         action[env.legs_tau_idx.RL] = tau.RL.reshape((3,))
         action[env.legs_tau_idx.RR] = tau.RR.reshape((3,))
-        loop_elapsed_time = time.time() - step_start
-        print("Step Time:", loop_elapsed_time)
         state, reward, is_terminated, is_truncated, info = env.step(action=action)
 
 
         # Sleep to match real-time ---------------------------------------------------------
+        loop_elapsed_time = time.time() - step_start
 
-        #if(loop_elapsed_time < simulation_dt):
-        #    time.sleep(simulation_dt - (loop_elapsed_time))
+        if(loop_elapsed_time < simulation_dt):
+            time.sleep(simulation_dt - (loop_elapsed_time))
 
         # Render only at a certain frequency -----------------------------------------------------------------
         if time.time() - last_render_time > 1.0 / RENDER_FREQ or env.step_num == 1:
-            #env.render()
+            env.render()
             last_render_time = time.time()
 
             if(locomotion_policy.use_vision):

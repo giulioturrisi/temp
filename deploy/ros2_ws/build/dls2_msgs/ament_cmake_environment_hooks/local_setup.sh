@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install/dls2_msgs"}
+: ${AMENT_CURRENT_PREFIX:="/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install/dls2_msgs"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

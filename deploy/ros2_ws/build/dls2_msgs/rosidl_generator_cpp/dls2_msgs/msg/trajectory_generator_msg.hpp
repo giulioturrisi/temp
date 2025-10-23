@@ -7,6 +7,5 @@
 #include "dls2_msgs/msg/detail/trajectory_generator_msg__struct.hpp"
 #include "dls2_msgs/msg/detail/trajectory_generator_msg__builder.hpp"
 #include "dls2_msgs/msg/detail/trajectory_generator_msg__traits.hpp"
-#include "dls2_msgs/msg/detail/trajectory_generator_msg__type_support.hpp"
 
 #endif  // DLS2_MSGS__MSG__TRAJECTORY_GENERATOR_MSG_HPP_

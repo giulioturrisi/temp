@@ -1,8 +1,8 @@
-# Install script for directory: /home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/build/dls2_msgs/dls2_msgs__py
+# Install script for directory: /home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/build/dls2_msgs/dls2_msgs__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install/dls2_msgs")
+  set(CMAKE_INSTALL_PREFIX "/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/install/dls2_msgs")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,14 +37,8 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set path to fallback-tool for dependency-resolution.
+# Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/iit.local/gturrisi/miniforge3/envs/basic_locomotion_dls_isaaclab_ros2_env/bin/x86_64-conda-linux-gnu-objdump")
+  set(CMAKE_OBJDUMP "/home/alienware/miniforge3/envs/isaaclab_env/bin/x86_64-conda-linux-gnu-objdump")
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/iit.local/gturrisi/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/build/dls2_msgs/dls2_msgs__py/install_local_manifest.txt"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
-endif()

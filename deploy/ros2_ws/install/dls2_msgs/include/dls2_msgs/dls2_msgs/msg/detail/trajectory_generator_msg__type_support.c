@@ -800,7 +800,97 @@ void dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c_
   *item = *value;
 }
 
-static rosidl_typesupport_introspection_c__MessageMember dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__TrajectoryGeneratorMsg_message_member_array[20] = {
+size_t dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__size_function__TrajectoryGeneratorMsg__kp(
+  const void * untyped_member)
+{
+  (void)untyped_member;
+  return 12;
+}
+
+const void * dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kp(
+  const void * untyped_member, size_t index)
+{
+  const double * member =
+    (const double *)(untyped_member);
+  return &member[index];
+}
+
+void * dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kp(
+  void * untyped_member, size_t index)
+{
+  double * member =
+    (double *)(untyped_member);
+  return &member[index];
+}
+
+void dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__fetch_function__TrajectoryGeneratorMsg__kp(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const double * item =
+    ((const double *)
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kp(untyped_member, index));
+  double * value =
+    (double *)(untyped_value);
+  *value = *item;
+}
+
+void dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__assign_function__TrajectoryGeneratorMsg__kp(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  double * item =
+    ((double *)
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kp(untyped_member, index));
+  const double * value =
+    (const double *)(untyped_value);
+  *item = *value;
+}
+
+size_t dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__size_function__TrajectoryGeneratorMsg__kd(
+  const void * untyped_member)
+{
+  (void)untyped_member;
+  return 12;
+}
+
+const void * dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kd(
+  const void * untyped_member, size_t index)
+{
+  const double * member =
+    (const double *)(untyped_member);
+  return &member[index];
+}
+
+void * dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kd(
+  void * untyped_member, size_t index)
+{
+  double * member =
+    (double *)(untyped_member);
+  return &member[index];
+}
+
+void dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__fetch_function__TrajectoryGeneratorMsg__kd(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const double * item =
+    ((const double *)
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kd(untyped_member, index));
+  double * value =
+    (double *)(untyped_value);
+  *value = *item;
+}
+
+void dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__assign_function__TrajectoryGeneratorMsg__kd(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  double * item =
+    ((double *)
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kd(untyped_member, index));
+  const double * value =
+    (const double *)(untyped_value);
+  *item = *value;
+}
+
+static rosidl_typesupport_introspection_c__MessageMember dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__TrajectoryGeneratorMsg_message_member_array[22] = {
   {
     "frame_id",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
@@ -1140,13 +1230,47 @@ static rosidl_typesupport_introspection_c__MessageMember dls2_msgs__msg__Traject
     dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__fetch_function__TrajectoryGeneratorMsg__normal_force_min,  // fetch(index, &value) function pointer
     dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__assign_function__TrajectoryGeneratorMsg__normal_force_min,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
+  },
+  {
+    "kp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    true,  // is array
+    12,  // array size
+    false,  // is upper bound
+    offsetof(dls2_msgs__msg__TrajectoryGeneratorMsg, kp),  // bytes offset in struct
+    NULL,  // default value
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__size_function__TrajectoryGeneratorMsg__kp,  // size() function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kp,  // get_const(index) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kp,  // get(index) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__fetch_function__TrajectoryGeneratorMsg__kp,  // fetch(index, &value) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__assign_function__TrajectoryGeneratorMsg__kp,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "kd",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    true,  // is array
+    12,  // array size
+    false,  // is upper bound
+    offsetof(dls2_msgs__msg__TrajectoryGeneratorMsg, kd),  // bytes offset in struct
+    NULL,  // default value
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__size_function__TrajectoryGeneratorMsg__kd,  // size() function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_const_function__TrajectoryGeneratorMsg__kd,  // get_const(index) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__get_function__TrajectoryGeneratorMsg__kd,  // get(index) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__fetch_function__TrajectoryGeneratorMsg__kd,  // fetch(index, &value) function pointer
+    dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__assign_function__TrajectoryGeneratorMsg__kd,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__TrajectoryGeneratorMsg_message_members = {
   "dls2_msgs__msg",  // message namespace
   "TrajectoryGeneratorMsg",  // message name
-  20,  // number of fields
+  22,  // number of fields
   sizeof(dls2_msgs__msg__TrajectoryGeneratorMsg),
   dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__TrajectoryGeneratorMsg_message_member_array,  // message members
   dls2_msgs__msg__TrajectoryGeneratorMsg__rosidl_typesupport_introspection_c__TrajectoryGeneratorMsg_init_function,  // function to initialize message memory (memory has to be allocated)

@@ -52,6 +52,10 @@ module dls2_msgs {
       double__4 normal_force_max;
 
       double__4 normal_force_min;
+
+      double__12 kp;
+
+      double__12 kd;
     };
   };
 };

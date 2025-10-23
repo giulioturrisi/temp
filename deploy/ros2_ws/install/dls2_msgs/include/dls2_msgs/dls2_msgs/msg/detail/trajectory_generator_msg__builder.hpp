@@ -21,16 +21,48 @@ namespace msg
 namespace builder
 {
 
+class Init_TrajectoryGeneratorMsg_kd
+{
+public:
+  explicit Init_TrajectoryGeneratorMsg_kd(::dls2_msgs::msg::TrajectoryGeneratorMsg & msg)
+  : msg_(msg)
+  {}
+  ::dls2_msgs::msg::TrajectoryGeneratorMsg kd(::dls2_msgs::msg::TrajectoryGeneratorMsg::_kd_type arg)
+  {
+    msg_.kd = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::dls2_msgs::msg::TrajectoryGeneratorMsg msg_;
+};
+
+class Init_TrajectoryGeneratorMsg_kp
+{
+public:
+  explicit Init_TrajectoryGeneratorMsg_kp(::dls2_msgs::msg::TrajectoryGeneratorMsg & msg)
+  : msg_(msg)
+  {}
+  Init_TrajectoryGeneratorMsg_kd kp(::dls2_msgs::msg::TrajectoryGeneratorMsg::_kp_type arg)
+  {
+    msg_.kp = std::move(arg);
+    return Init_TrajectoryGeneratorMsg_kd(msg_);
+  }
+
+private:
+  ::dls2_msgs::msg::TrajectoryGeneratorMsg msg_;
+};
+
 class Init_TrajectoryGeneratorMsg_normal_force_min
 {
 public:
   explicit Init_TrajectoryGeneratorMsg_normal_force_min(::dls2_msgs::msg::TrajectoryGeneratorMsg & msg)
   : msg_(msg)
   {}
-  ::dls2_msgs::msg::TrajectoryGeneratorMsg normal_force_min(::dls2_msgs::msg::TrajectoryGeneratorMsg::_normal_force_min_type arg)
+  Init_TrajectoryGeneratorMsg_kp normal_force_min(::dls2_msgs::msg::TrajectoryGeneratorMsg::_normal_force_min_type arg)
   {
     msg_.normal_force_min = std::move(arg);
-    return std::move(msg_);
+    return Init_TrajectoryGeneratorMsg_kp(msg_);
   }
 
 private:

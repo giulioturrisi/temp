@@ -19,10 +19,7 @@ _colcon_prefix_chain_bash_source_script() {
 
 # source chained prefixes
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script
-COLCON_CURRENT_PREFIX="/home/iit.local/gturrisi/miniforge3/envs/basic_locomotion_dls_isaaclab_ros2_env"
-_colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"
-# setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script
-COLCON_CURRENT_PREFIX="/home/iit.local/gturrisi/personal_ws_home/unitree_ros2_dls/unitree_ros2/cyclonedds_ws/install"
+COLCON_CURRENT_PREFIX="/home/alienware/miniforge3/envs/isaaclab_env"
 _colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"
 
 # source this prefix

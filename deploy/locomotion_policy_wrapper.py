@@ -131,11 +131,11 @@ class LocomotionPolicyWrapper:
         # Update Observation ----------------------        
         if(config.training_env["use_imu"] or config.training_env["use_cuncurrent_state_est"]):
             base_projected_gravity = self._get_projected_gravity(imu_orientation)
-            base_vel = imu_linear_acceleration
+            base_linear = imu_linear_acceleration
             base_ang_vel = imu_angular_velocity
         else:
             base_projected_gravity = self._get_projected_gravity(base_quat_wxyz)
-            base_vel = base_lin_vel
+            base_linear = base_lin_vel
             base_ang_vel = base_ang_vel
 
 
@@ -146,7 +146,7 @@ class LocomotionPolicyWrapper:
         # Fill the observation vector
         joints_pos_delta = joints_pos - self.default_joint_pos
         obs = np.concatenate([
-            base_vel, # this could be imu linear acc if use_imu or linear vel from state est
+            base_linear, # this could be imu linear acc if use_imu or linear vel from state est
             base_ang_vel,
             base_projected_gravity,
             ref_base_lin_vel_h[0:2],
@@ -205,13 +205,11 @@ class LocomotionPolicyWrapper:
             
         
         # RL Prediction
-        time_start_rl_inference = time.time()
         obs = obs.reshape(1, -1)
         obs = obs.astype(np.float32)
         rl_action_temp = self.policy.run(None, {'obs': obs})[0][0]
         rl_action_temp = np.clip(rl_action_temp, -self.desired_clip_actions, self.desired_clip_actions)
-        time_end_rl_inference = time.time()
-        print("RL Inference Time:", time_end_rl_inference - time_start_rl_inference)
+        
 
         # Action Filtering
         if(self.use_filter_actions):

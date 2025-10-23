@@ -25,6 +25,8 @@ import math  # noqa: E402, I100
 # Member 'swing_period'
 # Member 'normal_force_max'
 # Member 'normal_force_min'
+# Member 'kp'
+# Member 'kd'
 import numpy  # noqa: E402, I100
 
 import rosidl_parser.definition  # noqa: E402, I100
@@ -95,6 +97,8 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
         '_swing_period',
         '_normal_force_max',
         '_normal_force_min',
+        '_kp',
+        '_kd',
     ]
 
     _fields_and_field_types = {
@@ -118,6 +122,8 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
         'swing_period': 'double[4]',
         'normal_force_max': 'double[4]',
         'normal_force_min': 'double[4]',
+        'kp': 'double[12]',
+        'kd': 'double[12]',
     }
 
     SLOT_TYPES = (
@@ -141,6 +147,8 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('double'), 4),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('double'), 4),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('double'), 4),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('double'), 12),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('double'), 12),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -234,6 +242,16 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
         else:
             self.normal_force_min = numpy.array(kwargs.get('normal_force_min'), dtype=numpy.float64)
             assert self.normal_force_min.shape == (4, )
+        if 'kp' not in kwargs:
+            self.kp = numpy.zeros(12, dtype=numpy.float64)
+        else:
+            self.kp = numpy.array(kwargs.get('kp'), dtype=numpy.float64)
+            assert self.kp.shape == (12, )
+        if 'kd' not in kwargs:
+            self.kd = numpy.zeros(12, dtype=numpy.float64)
+        else:
+            self.kd = numpy.array(kwargs.get('kd'), dtype=numpy.float64)
+            assert self.kd.shape == (12, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -303,6 +321,10 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
         if all(self.normal_force_max != other.normal_force_max):
             return False
         if all(self.normal_force_min != other.normal_force_min):
+            return False
+        if all(self.kp != other.kp):
+            return False
+        if all(self.kd != other.kd):
             return False
         return True
 
@@ -873,3 +895,65 @@ class TrajectoryGeneratorMsg(metaclass=Metaclass_TrajectoryGeneratorMsg):
                  all(not (val < -1.7976931348623157e+308 or val > 1.7976931348623157e+308) or math.isinf(val) for val in value)), \
                 "The 'normal_force_min' field must be a set or sequence with length 4 and each value of type 'float' and each double in [-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000, 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000]"
         self._normal_force_min = numpy.array(value, dtype=numpy.float64)
+
+    @builtins.property
+    def kp(self):
+        """Message field 'kp'."""
+        return self._kp
+
+    @kp.setter
+    def kp(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float64, \
+                "The 'kp' numpy.ndarray() must have the dtype of 'numpy.float64'"
+            assert value.size == 12, \
+                "The 'kp' numpy.ndarray() must have a size of 12"
+            self._kp = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 12 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -1.7976931348623157e+308 or val > 1.7976931348623157e+308) or math.isinf(val) for val in value)), \
+                "The 'kp' field must be a set or sequence with length 12 and each value of type 'float' and each double in [-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000, 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000]"
+        self._kp = numpy.array(value, dtype=numpy.float64)
+
+    @builtins.property
+    def kd(self):
+        """Message field 'kd'."""
+        return self._kd
+
+    @kd.setter
+    def kd(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float64, \
+                "The 'kd' numpy.ndarray() must have the dtype of 'numpy.float64'"
+            assert value.size == 12, \
+                "The 'kd' numpy.ndarray() must have a size of 12"
+            self._kd = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 12 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -1.7976931348623157e+308 or val > 1.7976931348623157e+308) or math.isinf(val) for val in value)), \
+                "The 'kd' field must be a set or sequence with length 12 and each value of type 'float' and each double in [-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000, 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000]"
+        self._kd = numpy.array(value, dtype=numpy.float64)

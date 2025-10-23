@@ -1,0 +1,2 @@
+dls1_msgs
+-DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCATKIN_DEVEL_PREFIX=/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros1_ws/devel -DCMAKE_INSTALL_PREFIX=/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros1_ws/install -G Unix Makefiles
