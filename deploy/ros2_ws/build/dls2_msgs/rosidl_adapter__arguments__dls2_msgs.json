@@ -1,9 +1,0 @@
-{
-  "package_name": "dls2_msgs",
-  "non_idl_tuples": [
-    "/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/BlindStateMsg.msg",
-    "/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/BaseStateMsg.msg",
-    "/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/ControlSignalMsg.msg",
-    "/home/alienware/isaaclab_ws_home/basic-locomotion-dls-isaaclab/deploy/ros2_ws/src/dls2_msgs:msg/TrajectoryGeneratorMsg.msg"
-  ]
-}
