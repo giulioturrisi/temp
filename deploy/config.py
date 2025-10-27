@@ -4,7 +4,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(dir_path+"/../")
 sys.path.append(dir_path+"/../scripts/rsl_rl")
 
-robot = 'go2'  # 'aliengo', 'go1', 'go2', 'b2', 'hyqreal1', 'hyqreal2', 'mini_cheetah' 
+robot = 'aliengo'  # 'aliengo', 'go1', 'go2', 'b2', 'hyqreal1', 'hyqreal2', 'mini_cheetah' 
 scene = 'random_boxes'  # flat, random_boxes, random_pyramids, perlin
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ else:
 
 # ----------------------------------------------------------------------------------------------------------------
 
-policy_folder_path = dir_path + "/../tested_policies/" + robot + "/go2_flat_delay"
+policy_folder_path = dir_path + "/../tested_policies/" + robot + "/aliengo_delay_flat"
 #policy_folder_path = dir_path + "/../tested_policies/" + robot + "/go2_5asymm"
 
 cuncurrent_state_est_network = policy_folder_path + "/exported/cuncurrent_state_estimator.pth"
