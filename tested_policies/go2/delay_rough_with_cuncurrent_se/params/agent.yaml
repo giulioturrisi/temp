@@ -17,7 +17,7 @@ policy:
   - 128
   activation: elu
 algorithm:
-  class_name: PPOSymmDataAugmented
+  class_name: PPO
   num_learning_epochs: 5
   num_mini_batches: 4
   learning_rate: 0.001
@@ -36,7 +36,7 @@ algorithm:
 clip_actions: null
 save_interval: 50
 experiment_name: rough_direct
-run_name: aliengo_5asymm_symm_cuncurrent
+run_name: aliengo_delay_rough_with_go2_imu
 logger: wandb
 neptune_project: basic-rl
 wandb_project: basic-rl
